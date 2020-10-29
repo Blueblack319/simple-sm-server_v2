@@ -32,7 +32,7 @@ const typeDefs = gql`
   }
   type Query {
     getPosts: [Post]!
-    getPost: Post!
+    getPost(postId: ID!): Post!
   }
   input SignupInput {
     userName: String!
