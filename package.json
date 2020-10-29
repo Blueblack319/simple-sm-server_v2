@@ -4,7 +4,7 @@
   "description": "Do myselft",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon --exec babel-node index -w"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,14 @@
   "bugs": {
     "url": "https://github.com/crazybirdz/simple-sm-server_v2/issues"
   },
-  "homepage": "https://github.com/crazybirdz/simple-sm-server_v2#readme"
+  "homepage": "https://github.com/crazybirdz/simple-sm-server_v2#readme",
+  "dependencies": {
+    "@babel/cli": "^7.12.1",
+    "@babel/core": "^7.12.3",
+    "@babel/node": "^7.12.1",
+    "@babel/preset-env": "^7.12.1",
+    "apollo-server": "^2.18.2",
+    "graphql": "^15.4.0",
+    "nodemon": "^2.0.6"
+  }
 }
