@@ -1,0 +1,19 @@
+{
+  "name": "simple-sm-server_v2",
+  "version": "1.0.0",
+  "description": "Do myselft",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crazybirdz/simple-sm-server_v2.git"
+  },
+  "author": "Crazybirdz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/crazybirdz/simple-sm-server_v2/issues"
+  },
+  "homepage": "https://github.com/crazybirdz/simple-sm-server_v2#readme"
+}
