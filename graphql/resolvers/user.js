@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 
 import User from "../../models/User";
 import validateSignupInput from "../../utils/validator/validateSignupInput";
+import validateLoginInput from "../../utils/validator/validateLoginInput";
 
 dotenv.config();
 
@@ -21,6 +22,33 @@ const getToken = (user) =>
 
 const userResolver = {
   Mutation: {
+    async login(_, { userName, password }) {
+      const { errors, validity } = validateLoginInput(userName, password);
+      if (!validity) {
+        throw new UserInputError("Errors", {
+          errors,
+        });
+      }
+      const user = await User.findOne({ userName });
+      if (user) {
+        const isMatched = bcrypt.compare(password, user.password);
+        if (isMatched) {
+          const token = getToken(user);
+          console.log({ ...user });
+          return {
+            id: user._id,
+            ...user._doc,
+            token,
+          };
+        } else {
+          errors.password = "Password is wrong.";
+          throw new AuthenticationError("Password is wrong.", { errors });
+        }
+      } else {
+        errors.general = "User is not exist";
+        throw new AuthenticationError("This user is not exist", { errors });
+      }
+    },
     async signup(
       parent,
       { signupInput: { userName, email, password, confirmPassword } },
@@ -65,7 +93,6 @@ const userResolver = {
         token,
       };
     },
-    async login(_, { userName, password }) {},
   },
 };
 
