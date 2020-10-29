@@ -1,7 +1,10 @@
+import postResolver from "./post";
 import userResolver from "./user";
 
 const resolvers = {
-  Query: {},
+  Query: {
+    ...postResolver.Query,
+  },
   Mutation: {
     ...userResolver.Mutation,
   },

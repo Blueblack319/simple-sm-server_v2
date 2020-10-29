@@ -61,6 +61,7 @@ const userResolver = {
         password,
         confirmPassword
       );
+
       // Check input is valid
       if (!validity) {
         throw new UserInputError("Errors", { errors });
