@@ -22,8 +22,10 @@
     "@babel/node": "^7.12.1",
     "@babel/preset-env": "^7.12.1",
     "apollo-server": "^2.18.2",
+    "bcrypt": "^5.0.0",
     "dotenv": "^8.2.0",
     "graphql": "^15.4.0",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.10.11",
     "nodemon": "^2.0.6"
   }
