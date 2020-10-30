@@ -22,7 +22,7 @@ const getToken = (user) =>
 
 const userResolver = {
   Mutation: {
-    async login(_, { userName, password }) {
+    login: async (_, { userName, password }) => {
       const { errors, validity } = validateLoginInput(userName, password);
       if (!validity) {
         throw new UserInputError("Errors", {
@@ -34,7 +34,6 @@ const userResolver = {
         const isMatched = bcrypt.compare(password, user.password);
         if (isMatched) {
           const token = getToken(user);
-          console.log({ ...user });
           return {
             id: user._id,
             ...user._doc,
@@ -49,12 +48,12 @@ const userResolver = {
         throw new AuthenticationError("This user is not exist", { errors });
       }
     },
-    async signup(
+    signup: async (
       parent,
       { signupInput: { userName, email, password, confirmPassword } },
       context,
       info
-    ) {
+    ) => {
       const { errors, validity } = validateSignupInput(
         userName,
         email,
@@ -89,7 +88,7 @@ const userResolver = {
       // Get token
       const token = getToken(res);
       return {
-        id: res._id,
+        id: res._id, // Q. like 객체의 id는 자동으로 생성되었는데 여기 id는 왜 따로 만들어줘야 하지??
         ...res._doc, // res를 destructuring 했을때랑 그냥 console.log로 출력했을 때랑 결과값 다름!
         token,
       };
