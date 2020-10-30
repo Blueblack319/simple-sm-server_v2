@@ -4,7 +4,9 @@
   "description": "Do myselft",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --exec babel-node index -w"
+    "dev": "nodemon --exec babel-node index -w",
+    "build": "babel src --out-dir build",
+    "start": "node build/index"
   },
   "repository": {
     "type": "git",
