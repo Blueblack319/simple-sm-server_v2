@@ -6,6 +6,8 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
+const PORT = process.env.PORT || 4000;
+
 const server = new ApolloServer({
   typeDefs,
   resolvers,
@@ -19,7 +21,7 @@ mongoose
   })
   .then(() => {
     console.log(`✅Database is connected!`);
-    return server.listen({ port: 4000 });
+    return server.listen({ port: PORT });
   })
   .then(({ url }) => {
     console.log(`✅Server listening at ${url}`);
