@@ -31,7 +31,7 @@ const commentResolver = {
           (comment) => comment.id === commentId
         );
         if (post.comments[commentIndex].userName === userName) {
-          post.comments.slice(commentIndex, 1);
+          post.comments.splice(commentIndex, 1);
           await post.save();
           return post;
         } else {
